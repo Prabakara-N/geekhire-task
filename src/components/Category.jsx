@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setCategory } from "../redux/features/productSlice";
+import { setCategory, setLoading } from "../redux/features/productSlice";
 
 const Category = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,13 @@ const Category = () => {
           <li
             key={index}
             className="bg-slate-300 px-3 capitalize cursor-pointer py-1 rounded-md"
-            onClick={() => dispatch(setCategory(catergory))}
+            onClick={() => {
+              dispatch(setLoading(true));
+              setTimeout(() => {
+                dispatch(setCategory(catergory));
+                dispatch(setLoading(false));
+              }, 1200);
+            }}
           >
             {catergory}
           </li>

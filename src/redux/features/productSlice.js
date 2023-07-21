@@ -7,6 +7,7 @@ const productSlice = createSlice({
     products: products,
     favItems: [],
     category: "All",
+    loading: false,
   },
   reducers: {
     setFavItems: (state, action) => {
@@ -64,9 +65,18 @@ const productSlice = createSlice({
       );
       state.products = filteredProducts;
     },
+
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
 });
 
 export default productSlice.reducer;
-export const { setFavItems, setCategory, setFilterByPrize, setSearchByName } =
-  productSlice.actions;
+export const {
+  setFavItems,
+  setCategory,
+  setFilterByPrize,
+  setSearchByName,
+  setLoading,
+} = productSlice.actions;

@@ -4,13 +4,13 @@ import AllProducts from "../components/AllProducts";
 import Category from "../components/Category";
 import PriceFilter from "../components/PriceFilter";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchByName } from "../redux/features/productSlice";
+import { setLoading, setSearchByName } from "../redux/features/productSlice";
 import Loader from "../components/Loader";
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [isLoading, setisLoading] = useState(false);
-  const { products } = useSelector((state) => state.products);
+  const { products, loading } = useSelector((state) => state.products);
+
   const dispatch = useDispatch();
 
   const handleSearch = (e) => {
@@ -30,18 +30,18 @@ const Home = () => {
           value={searchValue}
           onChange={(e) => {
             setSearchValue(e.target.value);
-            setisLoading(true);
+            dispatch(setLoading(true));
             setTimeout(() => {
-              setisLoading(false);
+              dispatch(setLoading(false));
               dispatch(setSearchByName(e.target.value));
-            }, 1500);
+            }, 1300);
           }}
         />
         <CgSearch className="absolute top-3 right-4 text-xl" />
       </form>
       <Category />
       <PriceFilter />
-      {isLoading ? (
+      {loading ? (
         <Loader />
       ) : (
         <>
