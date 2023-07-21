@@ -59,7 +59,7 @@ const productSlice = createSlice({
 
     setSearchByName: (state, action) => {
       const searchQuery = action.payload.toLowerCase();
-      const filteredProducts = state.products.filter((product) =>
+      const filteredProducts = products.filter((product) =>
         product.name.toLowerCase().includes(searchQuery)
       );
       state.products = filteredProducts;
