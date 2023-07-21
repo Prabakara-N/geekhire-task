@@ -55,6 +55,8 @@ const productSlice = createSlice({
           (item) => item.price > 150 && item.price < 200
         );
         state.products = veryHighPrizeProduct;
+      } else {
+        state.products = products;
       }
     },
 
