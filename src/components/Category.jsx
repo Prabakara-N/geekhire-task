@@ -26,7 +26,7 @@ const Category = () => {
               selected === catergory
                 ? "bg-slate-800 text-white"
                 : "bg-slate-300"
-            } px-3 capitalize cursor-pointer py-1 rounded-md`}
+            } px-3 capitalize cursor-pointer py-1 rounded-md font-medium`}
             onClick={() => {
               handleCategory(catergory);
             }}
