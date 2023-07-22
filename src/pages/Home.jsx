@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CgSearch } from "react-icons/cg";
 import AllProducts from "../components/AllProducts";
 import Category from "../components/Category";
 import PriceFilter from "../components/PriceFilter";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading, setSearchByName } from "../redux/features/productSlice";
+import {
+  setCategory,
+  setLoading,
+  setSearchByName,
+} from "../redux/features/productSlice";
 import Loader from "../components/Loader";
 
 const Home = () => {
@@ -16,6 +20,10 @@ const Home = () => {
   const handleSearch = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    dispatch(setCategory("All")); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="px-16 py-6">
