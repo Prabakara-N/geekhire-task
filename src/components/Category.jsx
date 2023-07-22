@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCategory, setLoading } from "../redux/features/productSlice";
+import { productCategory } from "../data";
 
 const Category = () => {
   const [selected, setSelected] = useState("All");
   const dispatch = useDispatch();
 
-  const productCategory = ["All", "electronics", "clothing", "books"];
+  const handleCategory = (catergory) => {
+    dispatch(setLoading(true));
+    setSelected(catergory);
+    setTimeout(() => {
+      dispatch(setCategory(catergory));
+      dispatch(setLoading(false));
+    }, 1200);
+  };
 
   return (
     <div className="mt-5">
@@ -20,12 +28,7 @@ const Category = () => {
                 : "bg-slate-300"
             } px-3 capitalize cursor-pointer py-1 rounded-md`}
             onClick={() => {
-              dispatch(setLoading(true));
-              setSelected(catergory);
-              setTimeout(() => {
-                dispatch(setCategory(catergory));
-                dispatch(setLoading(false));
-              }, 1200);
+              handleCategory(catergory);
             }}
           >
             {catergory}

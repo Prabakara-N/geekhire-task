@@ -107,3 +107,5 @@ export const prices = [
     value: "151$ - 200$",
   },
 ];
+
+export const productCategory = ["All", "electronics", "clothing", "books"];

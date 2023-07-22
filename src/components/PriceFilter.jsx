@@ -5,16 +5,19 @@ import { setFilterByPrize, setLoading } from "../redux/features/productSlice";
 
 const PriceFilter = () => {
   const dispatch = useDispatch();
+
+  const handlePriceFilter = (e) => {
+    dispatch(setLoading(true));
+    setTimeout(() => {
+      dispatch(setFilterByPrize(e.target.value));
+      dispatch(setLoading(false));
+    }, 1000);
+  };
+
   return (
     <div className="text-right">
       <select
-        onChange={(e) => {
-          dispatch(setLoading(true));
-          setTimeout(() => {
-            dispatch(setFilterByPrize(e.target.value));
-            dispatch(setLoading(false));
-          }, 1000);
-        }}
+        onChange={handlePriceFilter}
         className="bg-slate-100 px-2 py-1 rounded-md cursor-pointer"
       >
         <option value="">Filter by Prize</option>
